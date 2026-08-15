@@ -29,6 +29,10 @@ public class Slot {
         this.vehicle= vehicle;
     }
 
+    public void setAvailibility(boolean flag){
+        isAvailable = flag;
+    }
+
     public int findAndAllocateSlot(Vehicle vehicle){
         if(vehicle.getVehicleType() == slotType && isAvailable){
             this.vehicle = vehicle;

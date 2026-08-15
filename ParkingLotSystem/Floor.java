@@ -15,9 +15,9 @@ public class Floor {
             if(i == 1){
             slot = new Slot(i,null,VehicleType.Truck);
             }else if(i>1 && i<=3){
-            slot = new Slot(slotCount, null, VehicleType.Bike);
+            slot = new Slot(i, null, VehicleType.Bike);
             }else{
-            slot = new Slot(slotCount, null, VehicleType.Car);
+            slot = new Slot(i, null, VehicleType.Car);
             }
             slots.add(slot);
         }
@@ -37,11 +37,13 @@ public class Floor {
     }
 
     public List<Slot> getFreeSlots(VehicleType vt){
+        System.out.println("%%% TEST %%%%%");
         List<Slot> freeSlotList = new ArrayList<>();
         for(int i=0;i<slots.size();i++){
             Slot slot = slots.get(i);
             if(slot.getAvailibilityByVt(vt))
-            {
+            {   
+                System.out.println(slot.getSlotId());
                 freeSlotList.add(slot);
             }
         }
