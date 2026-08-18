@@ -56,7 +56,7 @@ public class ParkingLot {
         StringBuilder sb = new StringBuilder();
         sb.append(parkingLotId).append('_').append(temp.getFloorId()).append('_').append(slot.getSlotId());
 
-        if(!tickets.containsKey(sb)){
+        if(!tickets.containsKey(sb.toString())){
             tickets.put(sb.toString(),ticket);
         }
             System.out.print("Vehicle is parked at Floor : "+ temp.getFloorId() + " and in Slot: "+slot.getSlotId() + " || ");
