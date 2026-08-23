@@ -25,6 +25,9 @@ public class Slot {
         }
         return false;
     }
+    public boolean isOccupiedByVt(VehicleType vt) {
+    return (vt == slotType) && !isAvailable;
+    }
     public void setVehicle(Vehicle vehicle){
         this.vehicle= vehicle;
     }

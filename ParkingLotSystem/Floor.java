@@ -37,13 +37,11 @@ public class Floor {
     }
 
     public List<Slot> getFreeSlots(VehicleType vt){
-        System.out.println("%%% TEST %%%%%");
         List<Slot> freeSlotList = new ArrayList<>();
         for(int i=0;i<slots.size();i++){
             Slot slot = slots.get(i);
             if(slot.getAvailibilityByVt(vt))
             {   
-                System.out.println(slot.getSlotId());
                 freeSlotList.add(slot);
             }
         }
@@ -54,7 +52,7 @@ public class Floor {
         List<Slot> OccupiedSlotList = new ArrayList<>();
         for(int i=0;i<slots.size();i++){
             Slot slot = slots.get(i);
-            if(!slot.getAvailibilityByVt(vt))
+            if(!slot.isOccupiedByVt(vt))
             {
                 OccupiedSlotList.add(slot);
             }

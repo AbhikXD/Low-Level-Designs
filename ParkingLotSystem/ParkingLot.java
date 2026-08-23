@@ -13,7 +13,7 @@ public class ParkingLot {
     private List<Floor> floors;
     private Map <Integer,List<Slot>> freeSlotPerFloor;
     private Map <Integer,List<Slot>> occSlotPerFloor;
-    private static Map<String,Ticket> tickets;
+    private Map<String,Ticket> tickets;
 
 
     public ParkingLot(int parkingLotId,int floorCount,int slotCount){
@@ -68,6 +68,7 @@ public class ParkingLot {
     public void unParkVehicle(String ticketID){
         if(!tickets.containsKey(ticketID)){
             System.out.println("Wrong ticketId. Please provide the correct ticketID");
+            return;
         }
         Ticket ticket = tickets.get(ticketID);
         Slot slot = ticket.slot;
@@ -82,10 +83,11 @@ public class ParkingLot {
         getFreeSlots(vt);
         for(int i=1;i<=floorCount;i++){
             List<Slot> freeSlot = freeSlotPerFloor.get(i);
-            System.out.print("Free Slots available for "+vt+" on Floor "+i + " ");
+            System.out.print("Free Slots available for "+vt+" on Floor "+i + " : ");
             for(int j=0;j<freeSlot.size();j++){
                 System.out.print(freeSlot.get(j).getSlotId()+ " ");
             }
+            System.out.println();
         }
         
     }
@@ -94,7 +96,7 @@ public class ParkingLot {
         getOccupiedSlots(vt);
         for(int i=1;i<=floorCount;i++){
            List<Slot> occupiedSlots =  occSlotPerFloor.get(i);
-           System.out.println("Occupied Slots available for "+vt+" on Floor "+i);
+           System.out.println("Occupied Slots available for "+vt+" on Floor "+i + " :");
             for(int j=0;j<occupiedSlots.size();j++){
                 System.out.print(occupiedSlots.get(j).getSlotId()+ " ");
             }
