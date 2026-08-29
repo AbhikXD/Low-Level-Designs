@@ -1,21 +1,25 @@
 package ParkingLotSystem;
 
 public class Ticket {
-    int parkingLot;
-    Floor floor;
-    Slot slot;
+    private int parkingLotId;
+    private Floor floor;
+    private Slot slot;
+    private String ticketId;
 
-    public Ticket(int parkingLot,Floor floor,Slot slot){
-        this.parkingLot = parkingLot;
+    public Ticket(int parkingLotId,Floor floor,Slot slot){
+        this.parkingLotId = parkingLotId;
         this.floor = floor;
         this.slot = slot;
+        this.ticketId = parkingLotId+"_"+floor.getFloorId()+"_"+slot.getSlotId();
     }
 
+    public String getTicketId(){
+        return ticketId;
+    }
+    public Slot getSlot(){
+        return slot;
+    }
     public void displayTicket(){
-        int parkingLotID = parkingLot;
-        int floorNumber = floor.getFloorId();
-        int slotID = slot.getSlotId();
-
-        System.out.println("TicketID: "+ parkingLotID+ "_"+floorNumber+"_"+slotID);
+        System.out.println("TicketID: "+ticketId);
     }
 }

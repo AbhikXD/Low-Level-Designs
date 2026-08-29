@@ -2,25 +2,29 @@ package ParkingLotSystem;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 public class Floor {
     private int floorId;
     private List<Slot> slots;
     
-    public Floor(int floorId,int slotCount){
+    public Floor(int floorId, int slotCount){
         this.floorId =floorId;
-        this.slots = new ArrayList<>();
-        Slot slot = null;
-        for(int i=1;i<=slotCount;i++){
-            if(i == 1){
-            slot = new Slot(i,null,VehicleType.Truck);
-            }else if(i>1 && i<=3){
-            slot = new Slot(i, null, VehicleType.Bike);
-            }else{
-            slot = new Slot(i, null, VehicleType.Car);
-            }
-            slots.add(slot);
-        }
+        FloorLayoutStrategy fls = new StandardFloorLayoutStrgy();
+
+        this.slots = fls.generateLayout(slotCount); 
+        
+        // // int currentSlotId = 1;
+        // for (Map.Entry<VehicleType, Integer> entry : capacityMap.entrySet()) {
+        //     VehicleType type = entry.getKey();
+        //     int count = entry.getValue();
+            
+        //     // Generate the requested number of slots for this vehicle type
+        //     for (int i = 0; i < count; i++) {
+        //         slots.add(new Slot(currentSlotId, null, type));
+        //         currentSlotId++;
+        //     }
+        // }
     }
 
     public int getFloorId(){

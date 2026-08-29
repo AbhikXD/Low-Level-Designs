@@ -71,9 +71,8 @@ public class ParkingLot {
             return;
         }
         Ticket ticket = tickets.get(ticketID);
-        Slot slot = ticket.slot;
-        slot.setAvailibility(true);
-        slot.setVehicle(null);
+        Slot slot = ticket.getSlot();
+        slot.freeSlot();
         System.out.println("Vehicle unparked");
         
         tickets.remove(ticketID);
